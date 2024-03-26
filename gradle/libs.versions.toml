@@ -122,3 +122,21 @@ runique-android-application = { id = "runique.android.application", version = "u
 runique-android-application-compose = { id = "runique.android.application.compose", version = "unspecified" }
 runique-android-library = { id = "runique.android.library", version = "unspecified" }
 runique-android-library-compose = { id = "runique.android.library.compose", version = "unspecified" }
+runique-android-feature-ui = { id = "runique.android.feature.ui", version = "unspecified" }
+
+[bundles]
+compose = [
+    "androidx-activity-compose",
+    "androidx-lifecycle-runtime-compose",
+    "androidx-lifecycle-viewmodel-compose",
+    "androidx-compose-material3",
+    "androidx-compose-ui",
+    "androidx-compose-ui-graphics",
+    "androidx-compose-ui-tooling-preview",
+]
+compose-debug = [
+    "androidx-compose-ui-tooling",
+    "androidx-compose-ui-test-manifest",
+]
+koin = ["koin-core", "koin-android", "koin-android-workmanager"]
+koin-compose = ["koin-core", "koin-android", "koin-android-workmanager", "koin-androidx-compose"]
