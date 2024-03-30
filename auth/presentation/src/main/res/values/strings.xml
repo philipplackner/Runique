@@ -23,4 +23,5 @@
     <string name="runique_welcome_text">Welcome to your ultimate running companion! Track, analyze and conquer your runs.</string>
     <string name="dont_have_an_account">Don\'t have an account?</string>
     <string name="youre_logged_in">You\'re logged in.</string>
+    <string name="error_email_password_incorrect">The email or password is incorrect.</string>
 </resources>
