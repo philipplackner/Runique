@@ -3,4 +3,10 @@
     <string name="runique">Runique</string>
     <string name="analytics">Analytics</string>
     <string name="logout">Logout</string>
+    <string name="active_run">Active Run</string>
+    <string name="pause_run">Pause run</string>
+    <string name="start_run">Start run</string>
+    <string name="duration">Duration</string>
+    <string name="distance">Distance</string>
+    <string name="pace">Pace</string>
 </resources>
