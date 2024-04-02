@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Runique</string>
+    <string name="title_analytics_feature">Analytics</string>
 </resources>
