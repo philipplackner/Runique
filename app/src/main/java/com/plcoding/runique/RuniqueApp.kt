@@ -41,7 +41,7 @@ class RuniqueApp: Application() {
                 locationModule,
                 databaseModule,
                 networkModule,
-                runDataModule
+                runDataModule,
             )
         }
     }
