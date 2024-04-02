@@ -4,6 +4,7 @@ package com.plcoding.run.presentation.active_run
 
 import android.Manifest
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Build
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -41,6 +42,7 @@ import com.plcoding.run.presentation.util.hasNotificationPermission
 import com.plcoding.run.presentation.util.shouldShowLocationPermissionRationale
 import com.plcoding.run.presentation.util.shouldShowNotificationPermissionRationale
 import org.koin.androidx.compose.koinViewModel
+import java.io.ByteArrayOutputStream
 
 @Composable
 fun ActiveRunScreenRoot(
@@ -112,13 +114,13 @@ private fun ActiveRunScreen(
     }
 
     LaunchedEffect(key1 = state.isRunFinished) {
-        if(state.isRunFinished) {
+        if (state.isRunFinished) {
             onServiceToggle(false)
         }
     }
 
     LaunchedEffect(key1 = state.shouldTrack) {
-        if(context.hasLocationPermission() && state.shouldTrack && !ActiveRunService.isServiceActive) {
+        if (context.hasLocationPermission() && state.shouldTrack && !ActiveRunService.isServiceActive) {
             onServiceToggle(true)
         }
     }
@@ -162,7 +164,17 @@ private fun ActiveRunScreen(
                 isRunFinished = state.isRunFinished,
                 currentLocation = state.currentLocation,
                 locations = state.runData.locations,
-                onSnapshot = {},
+                onSnapshot = { bmp ->
+                    val stream = ByteArrayOutputStream()
+                    stream.use {
+                        bmp.compress(
+                            Bitmap.CompressFormat.JPEG,
+                            80,
+                            it
+                        )
+                    }
+                    onAction(ActiveRunAction.OnRunProcessed(stream.toByteArray()))
+                },
                 modifier = Modifier
                     .fillMaxSize()
             )
