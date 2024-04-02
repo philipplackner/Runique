@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Runique</string>
     <string name="title_analytics_feature">Analytics</string>
+    <string name="error_couldnt_load_module">Couldn\'t load module</string>
+    <string name="error_installation_failed">Unfortunately, the installation failed. Please try again later.</string>
+    <string name="analytics_installed">The analytics feature was installed. Feel free to use it now.</string>
+    <string name="installing_module">Installing module</string>
 </resources>
