@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="connect_your_phone">This app requires the Runique phone app to be installed and connected.</string>
+    <string name="heart_rate">Heart rate</string>
+    <string name="unsupported">Unsupported</string>
+    <string name="distance">Distance</string>
+    <string name="open_active_run_screen">Please open the new run screen on your phone to get started.</string>
+    <string name="pause_run">Pause run</string>
+    <string name="start_run">Start run</string>
+    <string name="finish_run">Finish run</string>
+</resources>

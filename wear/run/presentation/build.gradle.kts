@@ -25,4 +25,5 @@ dependencies {
     implementation(libs.bundles.koin.compose)
 
     implementation(projects.core.presentation.designsystemWear)
+    implementation(projects.core.presentation.ui)
 }

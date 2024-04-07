@@ -12,23 +12,16 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.wear.compose.material3.Button
 import androidx.wear.compose.material3.Text
 import com.plcoding.core.presentation.designsystem_wear.RuniqueTheme
+import com.plcoding.wear.run.presentation.TrackerScreenRoot
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
-
         super.onCreate(savedInstanceState)
 
         setContent {
             RuniqueTheme {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Button(onClick = { /*TODO*/ }) {
-                        Text(text = "Hello world")
-                    }
-                }
+                TrackerScreenRoot()
             }
         }
     }
