@@ -38,6 +38,11 @@ kotlinx-serialization = "1.6.3"
 secretsPlugin = "2.0.1"
 playServicesMaps = "18.2.0"
 annotation = "1.7.1"
+composeWearOs = "1.3.1"
+composeMaterialWearOs = "1.0.0-alpha20"
+health = "1.0.0-rc02"
+play-services-wearable = "18.1.0"
+wear = "1.3.0"
 
 # Project versions
 projectApplicationId = "com.plcoding.runique"
@@ -98,6 +103,12 @@ org-mongodb-bson = { module = "org.mongodb:bson", version.ref = "bson" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
 google-maps-android-utils-ktx = { module = "com.google.maps.android:maps-utils-ktx", version.ref = "mapsUtils"}
 annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+androidx-wear-compose-material = { group = "androidx.wear.compose", name = "compose-material3", version.ref = "composeMaterialWearOs" }
+androidx-wear-compose-foundation = { group = "androidx.wear.compose", name = "compose-foundation", version.ref = "composeWearOs" }
+androidx-wear-compose-ui-tooling = { group = "androidx.wear.compose", name = "compose-ui-tooling", version.ref = "composeWearOs" }
+play-services-wearable = { group = "com.google.android.gms", name = "play-services-wearable", version.ref = "play-services-wearable" }
+androidx-health-services-client = { group = "androidx.health", name = "health-services-client", version.ref = "health" }
+androidx-wear = { group = "androidx.wear", name = "wear", version.ref = "wear" }
 
 # Gradle
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
@@ -126,6 +137,7 @@ runique-android-room = { id = "runique.android.room", version = "unspecified" }
 runique-android-dynamic-feature = { id = "runique.android.dynamic.feature", version = "unspecified" }
 runique-jvm-library = { id = "runique.jvm.library", version = "unspecified" }
 runique-jvm-ktor = { id = "runique.jvm.ktor", version = "unspecified" }
+runique-android-application-wear-compose = { id = "runique.android.application.wear.compose", version = "unspecified" }
 
 [bundles]
 compose = [
