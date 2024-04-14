@@ -1,4 +1,4 @@
-package com.plcoding.run.presentation.active_run.service
+package com.plcoding.core.notification
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -13,16 +13,18 @@ import androidx.core.app.TaskStackBuilder
 import androidx.core.content.getSystemService
 import androidx.core.net.toUri
 import com.plcoding.core.presentation.ui.formatted
-import com.plcoding.run.domain.RunningTracker
-import com.plcoding.run.presentation.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import org.koin.android.ext.android.inject
 import java.lang.IllegalArgumentException
+import kotlin.time.Duration
 
 class ActiveRunService: Service() {
 
@@ -36,7 +38,7 @@ class ActiveRunService: Service() {
             .setContentTitle(getString(R.string.active_run))
     }
 
-    private val runningTracker by inject<RunningTracker>()
+    private val elapsedTime by inject<StateFlow<Duration>>()
 
     private var serviceScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
@@ -57,8 +59,8 @@ class ActiveRunService: Service() {
     }
 
     private fun start(activityClass: Class<*>) {
-        if(!isServiceActive) {
-            isServiceActive = true
+        if(!isServiceActive.value) {
+            _isServiceActive.value = true
             createNotificationChannel()
 
             val activityIntent = Intent(applicationContext, activityClass).apply {
@@ -80,7 +82,7 @@ class ActiveRunService: Service() {
     }
 
     private fun updateNotification() {
-        runningTracker.elapsedTime.onEach { elapsedTime ->
+        elapsedTime.onEach { elapsedTime ->
             val notification = baseNotification
                 .setContentText(elapsedTime.formatted())
                 .build()
@@ -91,7 +93,7 @@ class ActiveRunService: Service() {
 
     fun stop() {
         stopSelf()
-        isServiceActive = false
+        _isServiceActive.value = false
         serviceScope.cancel()
 
         serviceScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
@@ -109,7 +111,9 @@ class ActiveRunService: Service() {
     }
 
     companion object {
-        var isServiceActive = false
+        private val _isServiceActive = MutableStateFlow(false)
+        val isServiceActive = _isServiceActive.asStateFlow()
+
         private const val CHANNEL_ID = "active_run"
 
         private const val ACTION_START = "ACTION_START"

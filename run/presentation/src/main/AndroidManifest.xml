@@ -10,7 +10,7 @@
     <application>
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="${MAPS_API_KEY}" />
 
-        <service android:name=".active_run.service.ActiveRunService"
+        <service android:name="com.plcoding.core.notification.ActiveRunService"
             android:foregroundServiceType="location" />
     </application>
 
