@@ -1,7 +1,7 @@
 package com.plcoding.wear.app.presentation
 
 import android.app.Application
-import com.plcoding.core.connectivity.data.coreConnectivityDataModule
+import com.plcoding.core.connectivity.data.di.coreConnectivityDataModule
 import com.plcoding.wear.app.presentation.di.appModule
 import com.plcoding.wear.run.data.di.wearRunDataModule
 import com.plcoding.wear.run.presentation.di.wearRunPresentationModule
