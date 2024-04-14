@@ -8,4 +8,6 @@
     <string name="pause_run">Pause run</string>
     <string name="start_run">Start run</string>
     <string name="finish_run">Finish run</string>
+    <string name="error_ongoing_exercise">There is already an ongoing exercise.</string>
+    <string name="error_exercise_already_ended">The exercise has already ended.</string>
 </resources>
