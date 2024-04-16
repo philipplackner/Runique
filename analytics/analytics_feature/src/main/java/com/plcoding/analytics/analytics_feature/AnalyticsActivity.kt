@@ -9,6 +9,7 @@ import androidx.navigation.compose.rememberNavController
 import com.google.android.play.core.splitcompat.SplitCompat
 import com.plcoding.analytics.data.di.analyticsModule
 import com.plcoding.analytics.presentation.AnalyticsDashboardScreenRoot
+import com.plcoding.analytics.presentation.di.analyticsPresentationModule
 import com.plcoding.core.presentation.designsystem.RuniqueTheme
 import org.koin.core.context.loadKoinModules
 
@@ -16,7 +17,12 @@ class AnalyticsActivity: ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loadKoinModules(analyticsModule)
+        loadKoinModules(
+            listOf(
+                analyticsModule,
+                analyticsPresentationModule
+            )
+        )
         SplitCompat.installActivity(this)
 
         setContent {
