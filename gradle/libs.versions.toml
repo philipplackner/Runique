@@ -124,7 +124,8 @@ runique-android-application = { id = "runique.android.application", version = "u
 runique-android-application-compose = { id = "runique.android.application.compose", version = "unspecified" }
 runique-android-library = { id = "runique.android.library", version = "unspecified" }
 runique-android-library-compose = { id = "runique.android.library.compose", version = "unspecified" }
-runique-android-feature-ui = { id = "runique-android-feature-ui", version = "unspecified" }
+runique-android-feature-ui = { id = "runique.android.feature.ui", version = "unspecified" }
+runique-android-room = { id = "runique.android.room", version = "unspecified" }
 
 [bundles]
 compose = [
