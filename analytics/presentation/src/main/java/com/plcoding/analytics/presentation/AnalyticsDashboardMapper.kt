@@ -5,7 +5,10 @@ import com.plcoding.core.presentation.ui.formatted
 import com.plcoding.core.presentation.ui.toFormattedKm
 import com.plcoding.core.presentation.ui.toFormattedKmh
 import com.plcoding.core.presentation.ui.toFormattedMeters
+import com.plcoding.core.presentation.ui.toFormattedPace
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.DurationUnit
 
