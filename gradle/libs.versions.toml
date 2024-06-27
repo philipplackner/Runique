@@ -48,7 +48,7 @@ junit5-plugin = "1.10.0.0"
 junit5-compose = "1.4.0"
 mockk = "1.13.11"
 assertk = "0.28.1"
-turbine = "0.7.0"
+turbine = "1.1.0"
 composeUiTestManifest = "1.6.8"
 coroutines-test = "1.8.1"
 

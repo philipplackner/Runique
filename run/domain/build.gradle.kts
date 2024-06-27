@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.runique.jvm.library)
+    alias(libs.plugins.runique.jvm.junit5)
 }
 
 dependencies {
@@ -7,4 +8,5 @@ dependencies {
 
     implementation(projects.core.domain)
     implementation(projects.core.connectivity.domain)
+    testImplementation(projects.core.test)
 }
