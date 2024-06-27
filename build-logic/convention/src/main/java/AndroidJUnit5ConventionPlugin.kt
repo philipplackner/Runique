@@ -26,6 +26,9 @@ class AndroidJUnit5ConventionPlugin: Plugin<Project> {
                 "androidTestImplementation"(libs.findLibrary("assertk").get())
                 "androidTestImplementation"(libs.findLibrary("coroutines.test").get())
                 "androidTestImplementation"(libs.findLibrary("turbine").get())
+                "androidTestImplementation"(libs.findBundle("ktor").get())
+                "androidTestImplementation"(libs.findLibrary("ktor.client.mock").get())
+                "androidTestImplementation"(project(":core:android-test"))
             }
         }
     }
