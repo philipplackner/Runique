@@ -3,7 +3,7 @@
 package com.plcoding.auth.presentation.login
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.text2.input.TextFieldState
+import androidx.compose.foundation.text.input.TextFieldState
 
 data class LoginState(
     val email: TextFieldState = TextFieldState(),
