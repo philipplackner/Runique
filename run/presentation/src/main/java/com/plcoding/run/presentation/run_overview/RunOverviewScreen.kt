@@ -122,7 +122,7 @@ private fun RunOverviewScreen(
                         onAction(RunOverviewAction.DeleteRun(it))
                     },
                     modifier = Modifier
-                        .animateItemPlacement()
+                        .animateItem()
                 )
             }
         }

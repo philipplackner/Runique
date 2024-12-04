@@ -15,10 +15,8 @@ import com.plcoding.core.domain.util.EmptyResult
 import com.plcoding.core.domain.util.Result
 import com.plcoding.core.domain.util.asEmptyDataResult
 import io.ktor.client.HttpClient
-import io.ktor.client.plugins.auth.Auth
 import io.ktor.client.plugins.auth.authProviders
 import io.ktor.client.plugins.auth.providers.BearerAuthProvider
-import io.ktor.client.plugins.plugin
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
