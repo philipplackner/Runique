@@ -1,10 +1,5 @@
-@file:Suppress("OPT_IN_USAGE_FUTURE_ERROR")
-@file:OptIn(ExperimentalFoundationApi::class)
-
 package com.plcoding.auth.presentation.register
 
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.text2.input.textAsFlow
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -17,6 +12,7 @@ import com.plcoding.core.domain.util.DataError
 import com.plcoding.core.domain.util.Result
 import com.plcoding.core.presentation.ui.UiText
 import com.plcoding.core.presentation.ui.asUiText
+import com.plcoding.core.presentation.ui.textAsFlow
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach

@@ -1,54 +1,52 @@
 [versions]
 agp = "8.3.2"
-androidTools = "31.5.0"
-core = "1.10.3"
-playCore = "1.10.3"
+androidTools = "31.7.3"
+playFeatureDelivery = "2.1.0"
 coreSplashscreen = "1.0.1"
-coilCompose = "2.6.0"
-desugar_jdk_libs = "2.0.4"
-kotlin = "2.0.0"
-coreKtx = "1.13.1"
+coilCompose = "2.7.0"
+desugar_jdk_libs = "2.1.3"
+kotlin = "2.0.21"
+coreKtx = "1.15.0"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
-activityCompose = "1.9.0"
-ktor = "2.3.11"
-ktorClientLogging = "2.3.8"
-ktorServerCallLogging = "2.3.7"
-koin = "3.5.6"
-lifecycleRuntimeKtx = "2.8.2"
-composeBom = "2024.06.00"
-materialIconsExtended = "1.6.8"
-navigationCompose = "2.7.7"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+activityCompose = "1.9.3"
+ktor = "3.0.1"
+ktorClientLogging = "3.0.1"
+koin = "4.0.0"
+lifecycleRuntimeKtx = "2.8.7"
+composeBom = "2024.11.00"
+materialIconsExtended = "1.7.5"
+navigationCompose = "2.8.4"
 securityCryptoKtx = "1.1.0-alpha06"
 timber = "5.0.1"
-ksp = "2.0.0-1.0.22"
+ksp = "2.0.21-1.0.25"
 room = "2.6.1"
 appcompat = "1.7.0"
 material = "1.12.0"
 org-jetbrains-kotlin-jvm = "1.9.22"
 maps = "4.3.3"
-coroutines = "1.8.1"
+coroutines = "1.9.0"
 gmsLocation = "21.3.0"
 mapsUtils = "5.0.0"
 bson = "4.11.1"
-work = "2.9.0"
-kotlinx-serialization = "1.6.3"
+work = "2.10.0"
+kotlinx-serialization = "1.7.3"
 secretsPlugin = "2.0.1"
-playServicesMaps = "18.2.0"
-annotation = "1.8.0"
-composeWearOs = "1.3.1"
-composeMaterialWearOs = "1.0.0-alpha23"
+playServicesMaps = "19.0.0"
+annotation = "1.9.1"
+composeWearOs = "1.4.0"
+composeMaterialWearOs = "1.0.0-alpha29"
 health = "1.0.0-rc02"
-play-services-wearable = "18.2.0"
+play-services-wearable = "19.0.0"
 wear = "1.3.0"
 
 # Project versions
 projectApplicationId = "com.plcoding.runique"
 projectVersionName = "1.0"
 projectMinSdkVersion = "25"
-projectTargetSdkVersion = "34"
-projectCompileSdkVersion = "34"
+projectTargetSdkVersion = "35"
+projectCompileSdkVersion = "35"
 projectVersionCode = "1"
 
 [libraries]
@@ -60,11 +58,11 @@ androidx-material-icons-extended = { module = "androidx.compose.material:materia
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationCompose" }
 androidx-security-crypto-ktx = { module = "androidx.security:security-crypto-ktx", version.ref = "securityCryptoKtx" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
-core = { module = "com.google.android.play:core", version.ref = "playCore" }
-core-testing = { module = "com.google.android.play:core-testing", version.ref = "playCore" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization"}
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines"}
 kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "coroutines"}
+play-feature-delivery = { module = "com.google.android.play:feature-delivery", version.ref = "playFeatureDelivery" }
+play-feature-delivery-ktx = { module = "com.google.android.play:feature-delivery-ktx", version.ref = "playFeatureDelivery" }
 desugar-jdk-libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar_jdk_libs" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-work = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "work" }
