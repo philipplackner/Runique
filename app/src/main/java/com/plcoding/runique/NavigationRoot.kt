@@ -23,7 +23,7 @@ fun NavigationRoot(
 ) {
     NavHost(
         navController = navController,
-        startDestination = if (isLoggedIn) "run" else "auth"
+        startDestination = if (isLoggedIn) Routes.Run else Routes.Auth
     ) {
         authGraph(navController)
         runGraph(navController, onAnalyticsClick)
@@ -31,25 +31,24 @@ fun NavigationRoot(
 }
 
 private fun NavGraphBuilder.authGraph(navController: NavHostController) {
-    navigation(
-        startDestination = "intro",
-        route = "auth"
+    navigation<Routes.Auth>(
+        startDestination = Routes.Intro,
     ) {
-        composable(route = "intro") {
+        composable<Routes.Intro> {
             IntroScreenRoot(
                 onSignUpClick = {
-                    navController.navigate("register")
+                    navController.navigate(Routes.Register)
                 },
                 onSignInClick = {
-                    navController.navigate("login")
+                    navController.navigate(Routes.Login)
                 }
             )
         }
-        composable(route = "register") {
+        composable<Routes.Register> {
             RegisterScreenRoot(
                 onSignInClick = {
-                    navController.navigate("login") {
-                        popUpTo("register") {
+                    navController.navigate(Routes.Login) {
+                        popUpTo(Routes.Register) {
                             inclusive = true
                             saveState = true
                         }
@@ -57,22 +56,22 @@ private fun NavGraphBuilder.authGraph(navController: NavHostController) {
                     }
                 },
                 onSuccessfulRegistration = {
-                    navController.navigate("login")
+                    navController.navigate(Routes.Login)
                 }
             )
         }
-        composable("login") {
+        composable<Routes.Login> {
             LoginScreenRoot(
                 onLoginSuccess = {
-                    navController.navigate("run") {
-                        popUpTo("auth") {
+                    navController.navigate(Routes.Run) {
+                        popUpTo(Routes.Auth) {
                             inclusive = true
                         }
                     }
                 },
                 onSignUpClick = {
-                    navController.navigate("register") {
-                        popUpTo("login") {
+                    navController.navigate(Routes.Register) {
+                        popUpTo(Routes.Login) {
                             inclusive = true
                             saveState = true
                         }
@@ -88,31 +87,29 @@ private fun NavGraphBuilder.runGraph(
     navController: NavHostController,
     onAnalyticsClick: () -> Unit
 ) {
-    navigation(
-        startDestination = "run_overview",
-        route = "run"
+    navigation<Routes.Run>(
+        startDestination = Routes.RunOverview,
     ) {
-        composable("run_overview") {
+        composable<Routes.RunOverview> {
             RunOverviewScreenRoot(
                 onStartRunClick = {
-                    navController.navigate("active_run")
+                    navController.navigate(Routes.ActiveRun)
                 },
                 onAnalyticsClick = onAnalyticsClick,
                 onLogoutClick = {
-                    navController.navigate("auth") {
-                        popUpTo("run") {
+                    navController.navigate(Routes.Auth) {
+                        popUpTo(Routes.Run) {
                             inclusive = true
                         }
                     }
                 }
             )
         }
-        composable(
-            route = "active_run",
+        composable<Routes.ActiveRun>(
             deepLinks = listOf(
-                navDeepLink {
-                    uriPattern = "runique://active_run"
-                }
+                navDeepLink<Routes.ActiveRun>(
+                    basePath = "runique://active_run"
+                )
             )
         ) {
             val context = LocalContext.current
