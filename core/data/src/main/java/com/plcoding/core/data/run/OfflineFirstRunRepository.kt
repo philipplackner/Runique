@@ -16,6 +16,7 @@ import com.plcoding.core.domain.util.Result
 import com.plcoding.core.domain.util.asEmptyDataResult
 import io.ktor.client.HttpClient
 import io.ktor.client.plugins.auth.Auth
+import io.ktor.client.plugins.auth.authProviders
 import io.ktor.client.plugins.auth.providers.BearerAuthProvider
 import io.ktor.client.plugins.plugin
 import kotlinx.coroutines.CoroutineScope
@@ -162,7 +163,7 @@ class OfflineFirstRunRepository(
             route = "/logout"
         ).asEmptyDataResult()
 
-        client.plugin(Auth).providers.filterIsInstance<BearerAuthProvider>()
+        client.authProviders.filterIsInstance<BearerAuthProvider>()
             .firstOrNull()
             ?.clearToken()
 
