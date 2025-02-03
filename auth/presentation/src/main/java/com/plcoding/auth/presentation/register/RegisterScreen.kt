@@ -40,7 +40,6 @@ import com.plcoding.core.presentation.designsystem.CrossIcon
 import com.plcoding.core.presentation.designsystem.EmailIcon
 import com.plcoding.core.presentation.designsystem.Poppins
 import com.plcoding.core.presentation.designsystem.RuniqueDarkRed
-import com.plcoding.core.presentation.designsystem.RuniqueGray
 import com.plcoding.core.presentation.designsystem.RuniqueGreen
 import com.plcoding.core.presentation.designsystem.RuniqueTheme
 import com.plcoding.core.presentation.designsystem.components.GradientBackground
@@ -82,7 +81,13 @@ fun RegisterScreenRoot(
 
     RegisterScreen(
         state = viewModel.state,
-        onAction = viewModel::onAction
+        onAction = { action ->
+            when(action) {
+                RegisterAction.OnLoginClick -> onSignInClick()
+                else -> Unit
+            }
+            viewModel.onAction(action)
+        }
     )
 }
 
