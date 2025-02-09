@@ -3,7 +3,6 @@ package com.plcoding.core.connectivity.data
 import android.content.Context
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.wearable.CapabilityClient
-import com.google.android.gms.wearable.CapabilityInfo
 import com.google.android.gms.wearable.Wearable
 import com.plcoding.core.connectivity.domain.DeviceNode
 import com.plcoding.core.connectivity.domain.DeviceType
@@ -36,7 +35,7 @@ class WearNodeDiscovery(
                 return@callbackFlow
             }
 
-            val listener: (CapabilityInfo) -> Unit = {
+            val listener = CapabilityClient.OnCapabilityChangedListener {
                 trySend(it.nodes.map { it.toDeviceNode() }.toSet())
             }
             capabilityClient.addListener(listener, remoteCapability)
