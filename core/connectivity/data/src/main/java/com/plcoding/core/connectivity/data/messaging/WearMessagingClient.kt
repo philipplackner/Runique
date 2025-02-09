@@ -2,7 +2,7 @@ package com.plcoding.core.connectivity.data.messaging
 
 import android.content.Context
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.wearable.MessageEvent
+import com.google.android.gms.wearable.MessageClient
 import com.google.android.gms.wearable.Wearable
 import com.plcoding.core.connectivity.domain.messaging.MessagingAction
 import com.plcoding.core.connectivity.domain.messaging.MessagingClient
@@ -29,8 +29,8 @@ class WearMessagingClient(
         connectedNodeId = nodeId
 
         return callbackFlow {
-            val listener: (MessageEvent) -> Unit = { event ->
-                if(event.path.startsWith(BASE_PATH_MESSAGING_ACTION)) {
+            val listener = MessageClient.OnMessageReceivedListener { event ->
+                if (event.path.startsWith(BASE_PATH_MESSAGING_ACTION)) {
                     val json = event.data.decodeToString()
                     val action = Json.decodeFromString<MessagingActionDto>(json)
                     trySend(action.toMessagingAction())
