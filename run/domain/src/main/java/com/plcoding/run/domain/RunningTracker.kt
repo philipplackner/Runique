@@ -103,7 +103,7 @@ class RunningTracker(
                     emit(location)
                 }
             }
-            .zip(_elapsedTime) { location, elapsedTime ->
+            .combine(_elapsedTime) { location, elapsedTime ->
                 LocationTimestamp(
                     location = location,
                     durationTimestamp = elapsedTime
