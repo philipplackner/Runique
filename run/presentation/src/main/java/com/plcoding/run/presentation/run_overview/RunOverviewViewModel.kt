@@ -10,8 +10,10 @@ import com.plcoding.core.domain.run.RunRepository
 import com.plcoding.core.domain.run.SyncRunScheduler
 import com.plcoding.run.presentation.run_overview.mapper.toRunUi
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.minutes
 
@@ -24,6 +26,9 @@ class RunOverviewViewModel(
 
     var state by mutableStateOf(RunOverviewState())
         private set
+
+    private val eventChannel = Channel<RunOverviewEvent>()
+    val events = eventChannel.receiveAsFlow()
 
     init {
         viewModelScope.launch {
@@ -62,6 +67,7 @@ class RunOverviewViewModel(
             runRepository.deleteAllRuns()
             runRepository.logout()
             sessionStorage.set(null)
+            eventChannel.send(RunOverviewEvent.OnLogout)
         }
     }
 }

@@ -29,6 +29,7 @@ import com.plcoding.core.presentation.designsystem.components.RuniqueFloatingAct
 import com.plcoding.core.presentation.designsystem.components.RuniqueScaffold
 import com.plcoding.core.presentation.designsystem.components.RuniqueToolbar
 import com.plcoding.core.presentation.designsystem.components.util.DropDownItem
+import com.plcoding.core.presentation.ui.ObserveAsEvents
 import com.plcoding.run.presentation.R
 import com.plcoding.run.presentation.run_overview.components.RunListItem
 import org.koin.androidx.compose.koinViewModel
@@ -40,13 +41,18 @@ fun RunOverviewScreenRoot(
     onAnalyticsClick: () -> Unit,
     viewModel: RunOverviewViewModel = koinViewModel(),
 ) {
+    ObserveAsEvents(flow = viewModel.events) { event ->
+        when (event) {
+            RunOverviewEvent.OnLogout -> onLogoutClick()
+        }
+    }
+
     RunOverviewScreen(
         state = viewModel.state,
         onAction = { action ->
             when(action) {
                 RunOverviewAction.OnAnalyticsClick -> onAnalyticsClick()
                 RunOverviewAction.OnStartClick -> onStartRunClick()
-                RunOverviewAction.OnLogoutClick -> onLogoutClick()
                 else -> Unit
             }
             viewModel.onAction(action)
