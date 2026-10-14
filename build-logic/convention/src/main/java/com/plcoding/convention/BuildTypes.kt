@@ -40,9 +40,17 @@ internal fun Project.configureBuildTypes(
                         configureDebugBuildType(apiKey)
                     }
                     release {
+                        // A LIBRARY DOES NOT SHRINK ITSELF. R8 inside a library
+                        // cannot see sibling modules -- those arrive only when
+                        // the app is assembled -- so it reports them missing and
+                        // asks to be told to ignore the project's own classes.
+                        // Shrinking belongs to the base module, which sees
+                        // everything; anything a library needs the app to honour
+                        // goes in its consumer-rules.pro.
                         configureReleaseBuildType(
-                            defaultProguardFile = getDefaultProguardFile("proguard-android-optimize.txt"),
-                            apiKey = apiKey
+                            defaultProguardFile = null,
+                            apiKey = apiKey,
+                            minify = false,
                         )
                     }
                 }
@@ -55,11 +63,21 @@ internal fun Project.configureBuildTypes(
                         configureDebugBuildType(apiKey)
                     }
                     release {
+                        // NO DEFAULT PROGUARD FILE HERE. AGP rejects it in a
+                        // dynamic feature, and the message says where it belongs:
+                        //
+                        //   Default file proguard-android-optimize.txt should
+                        //   not be specified in this module. It can be specified
+                        //   in the base module instead.
+                        //
+                        // :app already specifies it, and shrinking a dynamic
+                        // feature is driven from there -- which is why
+                        // minification was already off on this branch.
                         configureReleaseBuildType(
-                            defaultProguardFile = getDefaultProguardFile("proguard-android-optimize.txt"),
-                            apiKey = apiKey
+                            defaultProguardFile = null,
+                            apiKey = apiKey,
+                            minify = false,
                         )
-                        isMinifyEnabled = false
                     }
                 }
             }
@@ -73,15 +91,18 @@ private fun BuildType.configureDebugBuildType(apiKey: String) {
 }
 
 private fun BuildType.configureReleaseBuildType(
-    defaultProguardFile: File,
+    defaultProguardFile: File?,
     apiKey: String,
+    minify: Boolean = true,
 ) {
     buildConfigField("String", "API_KEY", "\"$apiKey\"")
     buildConfigField("String", "BASE_URL", "\"https://runique.pl-coding.com:8080\"")
 
-    isMinifyEnabled = true
-    proguardFiles(
-        defaultProguardFile,
-        "proguard-rules.pro"
-    )
+    isMinifyEnabled = minify
+    if (defaultProguardFile != null) {
+        proguardFiles(
+            defaultProguardFile,
+            "proguard-rules.pro"
+        )
+    }
 }
