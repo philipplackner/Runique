@@ -16,4 +16,9 @@ dependencies {
 
     implementation(projects.core.domain)
     implementation(projects.core.connectivity.domain)
+
+    // Temporary tests for 2 removeListener() bugs.
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation("io.mockk:mockk:1.13.5")
+    testImplementation("junit:junit:4.13.2")
 }
